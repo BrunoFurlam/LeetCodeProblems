@@ -7,15 +7,16 @@ public static class MergeTwoSortedListsSolution
     public class ListNode
     {
         public int val;
-        public ListNode next;
-        public ListNode(int val = 0, ListNode next = null)
+        public ListNode? next;
+
+        public ListNode(int val = 0, ListNode? next = null)
         {
             this.val = val;
             this.next = next;
         }
     }
 
-    public static ListNode MergeTwoLists(ListNode list1, ListNode list2)
+    public static ListNode? MergeTwoLists(ListNode? list1, ListNode? list2)
     {
         if (list1 == null)
             return list2;
@@ -34,19 +35,20 @@ public static class MergeTwoSortedListsSolution
         }
     }
 
-    private static ListNode NodesFromList(int[] list)
+    private static ListNode? NodesFromList(int[] list)
     {
         if (list.Length == 0)
             return null;
-        
+
         var node = new ListNode(list[list.Length - 1]);
+
         for (int i = list.Length - 2; i >= 0; i--)
             node = new ListNode(list[i], node);
 
         return node;
     }
 
-    private static string WriteList(ListNode node)
+    private static string WriteList(ListNode? node)
     {
         var sb = new StringBuilder();
 
@@ -54,8 +56,10 @@ public static class MergeTwoSortedListsSolution
         while (node != null)
         {
             sb.Append(node.val);
+
             if (node.next != null)
                 sb.Append(',');
+
             node = node.next;
         }
         sb.Append(']');
